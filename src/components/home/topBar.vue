@@ -35,7 +35,7 @@
 
   .topBar {
     background: #444444;
-    /*height: 47px;*/
+    height: 47px;
     /*width: 1000px;*/
   }
 

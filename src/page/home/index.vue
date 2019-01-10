@@ -36,7 +36,7 @@
      width: 70%;
      float: left;
     margin-left: 66px;
-    margin-top: 14px;
+    margin-top: -16px;
   }
 
 
