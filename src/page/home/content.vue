@@ -26,7 +26,7 @@
                {{getTab(item.tab)}}
 
             </span>
-            <a class="title" href="#">{{item.title}}</a>
+            <a class="title" href="#" v-bind:title="item.title">{{item.title}}</a>
 
           </div>
 
