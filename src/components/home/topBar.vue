@@ -85,7 +85,7 @@
 
    .topBar nav ol{
 
-      margin: 5px 0px;
+      /*margin: 5px 0px;*/
    }
   .topBar nav ol li {
     float: left;

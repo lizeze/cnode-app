@@ -26,8 +26,8 @@
                {{getTab(item.tab)}}
 
             </span>
-
             <a class="title" href="#">{{item.title}}</a>
+
           </div>
 
         </li>
@@ -108,6 +108,7 @@
     margin-left: 24px;
     padding: 6px;
 
+
   }
 
   .topBarActive {
@@ -124,6 +125,7 @@
     padding-top: 10px;
     border: 1px solid #F0F0F0;
     border-top: none;
+    width: 79%;
 
   }
 
@@ -143,6 +145,12 @@
     margin: 4px;
     margin-left: 13px;
     font-weight: bold;
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;
+    width: 84%;
+    text-align: left;
   }
 
   section ol li .content .leftCount {
@@ -163,16 +171,18 @@
   }
 
   .title {
- font-size: 16px;
+    font-size: 16px;
     line-height: 30px;
     color: #333;
+    text-overflow: ellipsis;
+
+
   }
 
   .title:hover {
 
     text-decoration-line: underline;
   }
-
 
   section ol li .content .tab {
     font-size: 12px;

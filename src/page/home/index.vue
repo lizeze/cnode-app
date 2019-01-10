@@ -1,17 +1,16 @@
 <template>
 
-   <div class="container clearfix">
-     <div class="contents">
-        <MainContent></MainContent>
+  <div class="container clearfix">
+    <div class="contents">
+      <MainContent></MainContent>
 
-     </div>
-  <div class="cards">2222</div>
+      <pagination  ></pagination>
+
+    </div>
+    <div class="cards">2222</div>
 
 
-
-
-   </div>
-
+  </div>
 
 </template>
 
@@ -19,31 +18,33 @@
 
 
   import MainContent from "./content";
+  import Pagination from "../../components/home/pagination";
+
   export default {
     name: "index",
-    components: {MainContent},
+    components: {Pagination, MainContent},
   }
 </script>
 
 <style scoped>
 
 
-  .container{
+  .container {
 
     background: #E1E1E1;
   }
-  .contents{
-     width: 70%;
-     float: left;
+
+  .contents {
+    width: 70%;
+    float: left;
     margin-left: 66px;
     margin-top: -16px;
+    background: #FFFFFF;
   }
 
+  .cards {
 
-
-   .cards{
-
-     float: left;
-   }
+    float: left;
+  }
 
 </style>
