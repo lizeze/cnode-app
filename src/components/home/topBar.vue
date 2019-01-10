@@ -35,7 +35,7 @@
 
   .topBar {
     background: #444444;
-    height: 47px;
+    /*height: 47px;*/
     /*width: 1000px;*/
   }
 
@@ -83,6 +83,10 @@
     height: 100%;
   }
 
+   .topBar nav ol{
+
+      margin: 5px 0px;
+   }
   .topBar nav ol li {
     float: left;
     margin-left: 30px;

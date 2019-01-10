@@ -1,12 +1,15 @@
 <template>
   <div id="app">
+  <top-bar></top-bar>
     <router-view/>
   </div>
 </template>
 
 <script>
+  import TopBar from "./components/home/topBar";
   export default {
-    name: 'App'
+    name: 'App',
+    components: {TopBar}
   }
 </script>
 

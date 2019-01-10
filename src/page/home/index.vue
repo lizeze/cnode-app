@@ -1,49 +1,49 @@
 <template>
-  <div>
 
-    <top-bar></top-bar>
-    <main class="container clearfix">
-      <div class="content">
+   <div class="container clearfix">
+     <div class="contents">
         <MainContent></MainContent>
-      </div>
-      <div class="cards">222</div>
 
-    </main>
+     </div>
+  <div class="cards">2222</div>
 
-  </div>
+
+
+
+   </div>
 
 
 </template>
 
 <script>
-  import TopBar from "../../components/home/topBar";
+
+
   import MainContent from "./content";
-
-
   export default {
     name: "index",
-    components: {MainContent, TopBar}
+    components: {MainContent},
   }
 </script>
 
 <style scoped>
 
-  .container {
-    width: 100%;
+
+  .container{
+
     background: #E1E1E1;
   }
-
-  .content {
-    margin-left: -119px;
-     margin-top: 10px;
-    float: left;
-
+  .contents{
+     width: 70%;
+     float: left;
+    margin-left: 66px;
+    margin-top: 14px;
   }
 
-  .cards {
 
-    float: left;
-  }
 
+   .cards{
+
+     float: left;
+   }
 
 </style>
