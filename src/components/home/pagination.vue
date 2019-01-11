@@ -3,7 +3,7 @@
 
     <ul class="clearfix">
 
-      <li v-for="(item,index) in numbers" v-bind:class="{active:item==curren}">
+      <li v-for="(item,index) in numbers" v-bind:class="{active:item==curren}" v-on:click="$emit('changePage',item)">
 
         <a v-bind:class="{active:curren==item}" href="#">{{item==0?'«':item<0? '»':item}}</a>
       </li>
@@ -18,15 +18,59 @@
 <script>
   export default {
     name: "pagination",
+    props: ['curren', 'pageCount', 'totalElements'],
     data: function () {
       return {
-        curren: 4,
-        numbers: [0, 1, 2, 3, 4,5,6,7,8,9,10,11,12, -1]
+        totalPages: 0,
+        numbers: [1, 2, 3, 4, 5, 6, 7, 8],
+        start: 1,
+        end: this.pageCount
 
 
       }
+    }, methods: {},
+
+
+    created: function () {
+
+
+    },
+    computed: {
+
+      resetPageNumbders: function () {
+
+        let pageIndex = this.curren;
+        alert(pageIndex)
+      }
+
+
+
+      // resetPageNumbders: function () {
+      //
+      //   let pageIndex = this.curren;
+      //   let pageCount = this.pageCount;
+      //   let totalPages = this.totalPages;
+      //   this.numbers = [];
+      //   totalPages = Math.ceil(this.totalElements / pageCount);
+      //   if (pageIndex >= this.pageCount) {
+      //
+      //     this.start = pageIndex - Math.floor(pageCount / 2);
+      //
+      //   }
+      //   this.end = this.start + pageCount - 1;
+      //   if (end > totalPages()) {
+      //     end = totalPages;
+      //
+      //   }
+      //   for (var i = this.start; i <= this.end; i++) {
+      //     this.numbers.push(i);
+      //   }
+      //
+      //
+      // }
     }
   }
+
 </script>
 
 <style scoped>
@@ -51,7 +95,7 @@
   ul li {
     float: left;
     line-height: 2em;
-   font-weight: inherit;
+    font-weight: inherit;
   }
 
   ul li a {

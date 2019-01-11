@@ -35,6 +35,13 @@
 
       </ol>
     </section>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="20"
+      v-on:current-change="changePage"
+      :total="100">
+    </el-pagination>
 
   </div>
 </template>
@@ -43,6 +50,24 @@
   export default {
     name: "MainContent",
     methods: {
+
+
+      changePage: function (item) {
+
+        this.loadData(item);
+
+
+      },
+
+      loadData: function (pageIndex) {
+        let _ = this;
+        this.axiosGet('topics?pageNumber=' + pageIndex + '&limit=20', function (data) {
+
+          _.topicList = data.data.data;
+        })
+
+      },
+
       changeNav: function (item) {
 
         this.active = item.id;
@@ -58,19 +83,14 @@
           case  "good" :
             return '精华'
           case "job":
-            return '工作'
+            return '招聘'
         }
       }
 
     }
     ,
     mounted: function () {
-      let _ = this;
-      this.axiosGet('topics?pageNumber=1&limit=20', function (data) {
-
-        _.topicList = data.data.data;
-        console.log(data)
-      })
+      this.loadData(1);
     }
     ,
     data: function () {
@@ -108,7 +128,6 @@
     margin-left: 24px;
     padding: 6px;
 
-
   }
 
   .topBarActive {
@@ -129,6 +148,11 @@
 
   }
 
+  section ol li:hover {
+
+    background: #f5f5f5
+  }
+
   section ol li .portrai {
     margin-left: 8px;
     float: left;
@@ -145,10 +169,10 @@
     margin: 4px;
     margin-left: 13px;
     font-weight: bold;
-    word-break:keep-all;/* 不换行 */
-    white-space:nowrap;/* 不换行 */
-    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
-    text-overflow:ellipsis;
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis;
     width: 84%;
     text-align: left;
   }
@@ -175,7 +199,6 @@
     line-height: 30px;
     color: #333;
     text-overflow: ellipsis;
-
 
   }
 

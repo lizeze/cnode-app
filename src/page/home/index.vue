@@ -4,10 +4,43 @@
     <div class="contents">
       <MainContent></MainContent>
 
-      <pagination  ></pagination>
 
     </div>
-    <div class="cards">2222</div>
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="inner">
+          <p> CNode：Node.js专业中文社区</p>
+          <div>您可以 <a href="#">登陆</a> 或 <a href="#">注册</a>,也可以</div>
+          <a href="#">
+            <span> 通过 GitHub 登录</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+
+        <div class="header">无人回复的话题</div>
+        <div class="inner">
+
+
+          <ol class="unstyled">
+
+            <li v-for="item in noreply">
+              <div><a href="#" :title="item.title">{{item.title}}</a>
+              </div>
+            </li>
+
+
+          </ol>
+
+
+        </div>
+
+      </div>
+
+    </div>
 
 
   </div>
@@ -23,6 +56,32 @@
   export default {
     name: "index",
     components: {Pagination, MainContent},
+    data: function () {
+
+      return {
+
+        noreply: []
+
+      }
+
+    },
+    methods: {
+
+      getNoReply: function () {
+        let _ = this;
+        this.axiosGetDev('/topic/noreply', function (data) {
+          _.noreply = data.data.data;
+
+        })
+      }
+
+
+    },
+    created() {
+      this.getNoReply();
+
+    }
+
   }
 </script>
 
@@ -43,8 +102,92 @@
   }
 
   .cards {
-
+    margin-left: 20px;
+    width: 290px;
     float: left;
+    margin-top: -26px;
+
   }
 
+  .cards .card {
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    font-size: 13px;
+    word-break: break-word;
+  }
+
+  .cards .card .inner {
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    background: #FFFFFF;
+
+  }
+
+  .cards .card .inner div {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 9px;
+  }
+
+  .cards .card .inner p {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .cards .card .inner div a {
+    color: #798086;
+  }
+
+  .cards .card .inner a span {
+    padding: 6px 10px;
+    letter-spacing: 2px;
+    color: #fff;
+    font-weight: bold;
+    background: #5bc0de;
+    border-radius: 4px;
+    line-height: 2em;
+
+  }
+
+  .cards .card .inner a span:hover {
+    color: #fff;
+    background-color: #2f96b4;
+  }
+
+  .cards .card .header {
+    text-align: left;
+    background: #F6F6F6;
+    padding: 10px 12px;
+
+    color: #444;
+  }
+
+  .cards .card .inner .unstyled {
+
+    text-align: left;
+
+    color: #333;
+    max-width: 270px;
+  }
+
+  .cards .card .inner .unstyled li {
+
+    font-size: 14px;
+
+  }
+
+  .cards .card .inner .unstyled li div {
+    color: #778087;
+    max-width: 270px;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+  }
+
+  .cards .card .inner .unstyled li a:hover {
+    text-decoration-line: underline;
+  }
 </style>
