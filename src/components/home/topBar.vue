@@ -9,7 +9,7 @@
     <nav>
 
       <ol>
-        <li v-for="item in navList">
+        <li v-for="item in navList" :key="item.text">
           <a href="#">{{item.text}}</a>
         </li>
 

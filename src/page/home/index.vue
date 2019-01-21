@@ -4,7 +4,6 @@
     <div class="contents">
       <MainContent></MainContent>
 
-
     </div>
     <div class="cards">
 

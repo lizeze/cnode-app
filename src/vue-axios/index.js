@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-let  baseUrl='https://cnodejs.org/api/v1/'
+let  baseUrl='https://cnodejs.org/api/v1/';
 const http = {
   install() {
     Vue.prototype.axiosGet = function (url,ok) {

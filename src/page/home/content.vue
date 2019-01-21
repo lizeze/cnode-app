@@ -3,7 +3,7 @@
 
     <div class="topBar">
       <ol class="clearfix">
-        <li v-for="item in navList">
+        <li v-for="item in navList"  :key="item.id">
           <a v-on:click="changeNav(item)" v-bind:class="{topBarActive:active==item.id}" href="#">{{item.text}}</a>
         </li>
 
@@ -12,21 +12,24 @@
     </div>
     <section>
       <ol>
-        <li class="clearfix" v-for="item in topicList">
+        <li class="clearfix" v-for="item in topicList" :key="item.id">
           <div class="portrai">
             <a href="#">
               <img v-bind:src="item.author.avatar_url" alt=""/>
             </a>
           </div>
           <div class="content">
-            <span class="leftCount">{{item.reply_count}}</span><span class="count_seperator">/</span><span
-            class="rightCount">{{item.visit_count}}</span>
+            <div style="width: 60px"><span class="leftCount">{{item.reply_count}}</span><span class="count_seperator">/</span><span
+              class="rightCount">{{item.visit_count}}</span>
+            </div>
+
             <span v-if="item.top" class="tab top">置顶</span>
             <span v-if="!item.top" class="tab topic ">
                {{getTab(item.tab)}}
 
             </span>
             <a class="title" href="#" v-bind:title="item.title">{{item.title}}</a>
+             <router-link :to="{name:'detail',params:{id:item.id}}">333</router-link>
 
           </div>
 
@@ -176,20 +179,22 @@
     width: 84%;
     text-align: left;
   }
-
-  section ol li .content .leftCount {
+  section ol li .content div{
+    display: inline-block;
+  }
+  section ol li .content div .leftCount {
     font-size: 14px;
 
     color: #987FBF;
   }
 
-  section ol li .content .count_seperator {
+  section ol li .content  div .count_seperator {
     /*margin: 0 px;*/
 
     font-size: 10px;
   }
 
-  section ol li .content .rightCount {
+  section ol li .content  div .rightCount {
     color: #C1B9B5;
     font-size: 12px;
   }
@@ -209,7 +214,7 @@
 
   section ol li .content .tab {
     font-size: 12px;
-    padding: 2px 4px;
+    padding: 4px 4px 4px 6px;
     font-weight: bold;
     color: #fff;
     border-radius: 3px;
