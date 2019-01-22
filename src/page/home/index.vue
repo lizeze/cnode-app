@@ -20,22 +20,7 @@
 
       <div class="card">
 
-        <div class="header">无人回复的话题</div>
-        <div class="inner">
-
-
-          <ol class="unstyled">
-
-            <li v-for="item in noreply">
-              <div><a href="#" :title="item.title">{{item.title}}</a>
-              </div>
-            </li>
-
-
-          </ol>
-
-
-        </div>
+        <noreply></noreply>
 
       </div>
 
@@ -51,33 +36,27 @@
 
   import MainContent from "./content";
   import Pagination from "../../components/home/pagination";
+  import Noreply from "../../components/noreply/noreply";
 
   export default {
     name: "index",
-    components: {Pagination, MainContent},
+    components: {Noreply, Pagination, MainContent},
     data: function () {
 
       return {
 
-        noreply: []
+        userInfo: {}
 
       }
 
     },
     methods: {
 
-      getNoReply: function () {
-        let _ = this;
-        this.axiosGetDev('/topic/noreply', function (data) {
-          _.noreply = data.data.data;
-
-        })
-      }
 
 
     },
     created() {
-      this.getNoReply();
+
 
     }
 
@@ -189,7 +168,8 @@
   .cards .card .inner .unstyled li a:hover {
     text-decoration-line: underline;
   }
-  li{
+
+  li {
 
     list-style: none;
   }

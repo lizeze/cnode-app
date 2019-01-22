@@ -5,6 +5,7 @@ import Detail from '@/page/home/detail'
 Vue.use(Router)
 
 export default new Router({
+  type:history,
   routes: [
     {
       path: '/',

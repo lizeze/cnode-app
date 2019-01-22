@@ -8,12 +8,12 @@ const http = {
       axios
         .get(baseUrl + url)
         .then(response => {
-          ok && ok(response);
+          ok && ok(response.data);
         })
         .catch(error => {
         })
         .finally();
-    }
+    };
 
     Vue.prototype.axiosGetDev = function (url,ok) {
       axios

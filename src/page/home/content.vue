@@ -67,9 +67,9 @@
 
       loadData: function (pageIndex) {
         let _ = this;
-        this.axiosGet('topics?pageNumber=' + pageIndex + '&limit=20', function (data) {
+        this.axiosGet('topics?pageNumber=' + pageIndex + '&limit=50', function (data) {
 
-          _.topicList = data.data.data;
+          _.topicList = data.data;
         })
 
       },

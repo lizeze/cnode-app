@@ -1,6 +1,6 @@
 <template>
 
-  <div class="warpper">
+  <div class="warpper clearfix">
     <div class="content">
       <div class="title ">
         <span class="top">置顶</span>
@@ -17,23 +17,47 @@
 
 
     </div>
+    <div class="panels">
+
+      <div class="panel">
+        <author :user-info="userInfo"></author>
+      </div>
+      <div class="panel">
+        <othertopic :user-info="userInfo"></othertopic>
+
+      </div>
+      <div class="panel">
+        <noreply :user-info="userInfo" panelType="no"></noreply>
+      </div>
+
+    </div>
   </div>
 
 
 </template>
 <script>
+  import Noreply from "../../components/noreply/noreply";
+  import Author from "../../components/author/author";
+  import Othertopic from "../../components/author/othertopic";
+
   export default {
-    components: {},
+    components: {Othertopic, Author, Noreply},
     data() {
       return {
-        article: {}
+        article: {},
+        userInfo: {}
       }
     },
     beforeCreate: function () {
+
       let _ = this;
+
+
       this.axiosGet('/topic/' + this.$route.params.id, function (data) {
-        _.article = data.data.data;
-        console.log(_.article)
+        _.article = data.data;
+        _.getLoginUser(data.data.author.loginname, function (data) {
+          _.userInfo = data.data;
+        });
       })
     }, methods: {
       DateMinus(start) {
@@ -59,7 +83,7 @@
     font-size: 22px;
     font-weight: 700;
     vertical-align: bottom;
-     border-bottom: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
   }
 
   .title .top {
@@ -90,6 +114,7 @@
     text-align: left;
     background: #fff;
     width: 73%;
+    float: left;
 
   }
 
@@ -98,10 +123,20 @@
     padding: 0 20px;
     margin: 0 10px;
   }
-  .article >>> .markdown-text:first-child{
+
+  .article >>> .markdown-text:first-child {
 
     margin-top: 0px;
   }
+
+  .article >>> .markdown-text img {
+    cursor: pointer;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+  }
+
   .article >>> .markdown-text p {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
@@ -112,10 +147,23 @@
     margin: 1em 0;
   }
 
-  .article >>> .markdown-text>>>  ol, ul {
+  .article >>> .markdown-text >>> ol, ul {
 
     padding: 0;
     margin: 0 0 10px 25px;
+
+  }
+
+  .panels {
+
+    float: left;
+    margin-left: 15px;
+  }
+
+  .panels .panel {
+
+    width: 300px;
+    margin-bottom: 20px;
 
   }
 </style>

@@ -9,7 +9,6 @@
     "start": "npm run dev",
     "build": "node --max_old_space_size=4096 build/build.js",
     "fix-memory-limit": "cross-env LIMIT=8096 increase-memory-limit"
-
   },
   "dependencies": {
     "axios": "^0.18.0",
