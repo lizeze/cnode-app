@@ -36,12 +36,13 @@
           var urlStrArr = urlStr.split('/')
           return urlStrArr[urlStrArr.length - 1]
         }
-      } ,watch: {
-        '$route' (to, from) {
-          alert(22)
-          console.log(this.getStatus(this.$route.path))
-        }
-      },
+      } ,
+          watch: {
+            '$route': function (route) {
+              this.$router.go(0)
+            },
+          },
+
       created(){
         console.log(this.getStatus(this.$route.path))
       }

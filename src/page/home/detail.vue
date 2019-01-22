@@ -153,7 +153,24 @@
     margin: 0 0 10px 25px;
 
   }
-
+  .article >>>div pre.prettyprint {
+    font-size: 14px;
+    border-radius: 0;
+    padding: 0 15px;
+    border: none;
+    margin: 20px -10px;
+    border-width: 1px 0;
+    background: #f7f7f7;
+    -o-tab-size: 4;
+    -moz-tab-size: 4;
+    tab-size: 4;
+  }
+  .article >>>pre code {
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    line-height: 2em;
+  }
   .panels {
 
     float: left;
