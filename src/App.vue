@@ -35,10 +35,7 @@
     clear: both;
   }
 
-  li {
 
-    list-style: none;
-  }
 
   a {
     text-decoration: none;
@@ -46,7 +43,7 @@
   }
 
   body{
-
+  background: #E1E1E1;
     font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif!important;
   }
 </style>

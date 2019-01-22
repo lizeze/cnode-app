@@ -1,14 +1,14 @@
 <template>
   <div class="topBar clearfix">
     <div class="logo">
-      <a href="#">
+      <a href="/">
         <img src="https://static2.cnodejs.org/public/images/cnodejs_light.svg" alt="">
       </a>
     </div>
     <div class="searchBox "><input type="text"></div>
     <nav>
 
-      <ol>
+      <ol style="list-style: none">
         <li v-for="item in navList" :key="item.text">
           <a href="#">{{item.text}}</a>
         </li>
@@ -98,5 +98,8 @@
   .topBar nav ol li a:hover {
 
     color: #fff;
+  }
+  a{
+    color: inherit;
   }
 </style>

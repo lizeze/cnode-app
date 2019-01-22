@@ -2,8 +2,8 @@
   <div>
 
     <div class="topBar">
-      <ol class="clearfix">
-        <li v-for="item in navList"  :key="item.id">
+      <ol class="clearfix" style="list-style: none">
+        <li v-for="item in navList" :key="item.id">
           <a v-on:click="changeNav(item)" v-bind:class="{topBarActive:active==item.id}" href="#">{{item.text}}</a>
         </li>
 
@@ -11,7 +11,7 @@
 
     </div>
     <section>
-      <ol>
+      <ol style="list-style: none">
         <li class="clearfix" v-for="item in topicList" :key="item.id">
           <div class="portrai">
             <a href="#">
@@ -19,7 +19,8 @@
             </a>
           </div>
           <div class="content">
-            <div style="width: 60px"><span class="leftCount">{{item.reply_count}}</span><span class="count_seperator">/</span><span
+            <div style="width: 60px"><span class="leftCount">{{item.reply_count}}</span><span
+              class="count_seperator">/</span><span
               class="rightCount">{{item.visit_count}}</span>
             </div>
 
@@ -28,8 +29,10 @@
                {{getTab(item.tab)}}
 
             </span>
-            <a class="title" href="#" v-bind:title="item.title">{{item.title}}</a>
-             <router-link :to="{name:'detail',params:{id:item.id}}">333</router-link>
+
+            <router-link class="title" v-bind:title="item.title" :to="{name:'detail',params:{id:item.id}}">
+              {{item.title}}
+            </router-link>
 
           </div>
 
@@ -179,22 +182,24 @@
     width: 84%;
     text-align: left;
   }
-  section ol li .content div{
+
+  section ol li .content div {
     display: inline-block;
   }
+
   section ol li .content div .leftCount {
     font-size: 14px;
 
     color: #987FBF;
   }
 
-  section ol li .content  div .count_seperator {
+  section ol li .content div .count_seperator {
     /*margin: 0 px;*/
 
     font-size: 10px;
   }
 
-  section ol li .content  div .rightCount {
+  section ol li .content div .rightCount {
     color: #C1B9B5;
     font-size: 12px;
   }
@@ -229,4 +234,6 @@
 
     background: #80bd01;
   }
+
+
 </style>

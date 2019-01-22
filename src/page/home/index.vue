@@ -189,4 +189,8 @@
   .cards .card .inner .unstyled li a:hover {
     text-decoration-line: underline;
   }
+  li{
+
+    list-style: none;
+  }
 </style>
