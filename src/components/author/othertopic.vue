@@ -6,7 +6,7 @@
     <div class="content">
       <ul>
         <li class="content-item" v-for="item in userInfo.recent_topics" :key="item.id">
-          <a   href="#" @click.stop.prevent="open(item.id)"> {{item.title}}</a>
+          <a   href="#" @click.stop.prevent="$emit('title-click',item.id)"> {{item.title}}</a>
         </li>
       </ul>
     </div>

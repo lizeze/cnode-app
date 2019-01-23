@@ -1,28 +1,14 @@
 <template>
   <div class="warpper clearfix">
     <div class="content">
-      <div class="title">
-        <span class="top">置顶</span>
-        {{article.title}}
-        <div class="describe">
-          <span class="item"></span>
-          发布于{{DateMinus(article.create_at)}}天前
-          <span class="item"></span>
-          作者{{article.author.loginname}}
-          <span class="item"></span>
-          {{article.visit_count}}次浏览
-          <span class="item"></span>最后一次编辑9天前
-        </div>
-        <div class="border1px"></div>
-      </div>
-      <article class="article" v-html="article.content"></article>
+      <topicDetail  :article=article ></topicDetail>
     </div>
     <div class="panels">
       <div class="panel">
         <author :user-info="userInfo"></author>
       </div>
       <div class="panel">
-        <othertopic :user-info="userInfo"></othertopic>
+        <othertopic   @title-click='titleClick' :user-info="userInfo"></othertopic>
       </div>
       <div class="panel">
         <noreply :user-info="userInfo"></noreply>
@@ -34,9 +20,9 @@
 import Noreply from '@/components/noreply/noreply';
 import Author from '@/components/author/author';
 import Othertopic from '@/components/author/othertopic';
-
+import topicDetail from '@/components/topic/topicdetail'
 export default {
-  components: { Othertopic, Author, Noreply },
+  components: {Othertopic, Author, Noreply, topicDetail},
   data () {
     return {
       article: {
@@ -47,15 +33,23 @@ export default {
       userInfo: {}
     };
   },
-  beforeCreate () {
-    this.axiosGet('/topic/' + this.$route.params.id).then(data => {
-      this.article = data.data;
-      this.axiosGet('/user/' + this.article.author.loginname).then((user) => {
-        this.userInfo = user.data;
-      })
-    });
+  created () {
+    this.loadTopic(this.$route.params.id, true);
   },
   methods: {
+    titleClick (id) {
+      this.loadTopic(id, false);
+    },
+    loadTopic (id, flg) {
+      this.axiosGet('/topic/' + id).then(data => {
+        this.article = data.data;
+        if (flg) {
+          this.axiosGet('/user/' + this.article.author.loginname).then((user) => {
+            this.userInfo = user.data;
+          });
+        }
+      });
+    },
     DateMinus (start) {
       let sdate = new Date(start);
       let now = new Date();
@@ -108,57 +102,6 @@ export default {
   background: #fff;
   width: 73%;
   float: left;
-}
-
-.article {
-  padding: 0 20px;
-  margin: 0 10px;
-}
-
-.article >>> .markdown-text:first-child {
-  margin-top: 0px;
-}
-
-.article >>> .markdown-text img {
-  cursor: pointer;
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-  border: 0;
-}
-
-.article >>> .markdown-text p {
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
-  line-height: 2em;
-  margin: 1em 0;
-}
-
-.article >>> .markdown-text >>> ol,
-ul {
-  padding: 0;
-  margin: 0 0 10px 25px;
-}
-.article >>> div pre.prettyprint {
-  font-size: 14px;
-  border-radius: 0;
-  padding: 0 15px;
-  border: none;
-  margin: 20px -10px;
-  border-width: 1px 0;
-  background: #f7f7f7;
-  -o-tab-size: 4;
-  -moz-tab-size: 4;
-  tab-size: 4;
-}
-.article >>> pre code {
-  color: inherit;
-  white-space: pre-wrap;
-  background-color: transparent;
-  line-height: 2em;
 }
 .panels {
   float: left;

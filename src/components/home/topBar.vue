@@ -7,38 +7,30 @@
     </div>
     <div class="searchBox "><input type="text"></div>
     <nav>
-
       <ol style="list-style: none">
         <li v-for="item in navList" :key="item.text">
           <a href="#">{{item.text}}</a>
         </li>
-
-
       </ol>
     </nav>
   </div>
 </template>
-
 <script>
   export default {
     name: 'topBar',
     data () {
       return {
         navList: [{text: '首页'}, {text: '新手入门'}, {text: 'API'}, {text: '关于'}, {text: '注册'}, {text: '登陆'}]
-
       }
     }
   }
 </script>
-
 <style scoped>
-
   .topBar {
     background: #444444;
     height: 47px;
     /*width: 1000px;*/
   }
-
   .topBar .logo {
     margin-left: 67px;
     float: left;
