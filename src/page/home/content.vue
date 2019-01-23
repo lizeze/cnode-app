@@ -1,14 +1,11 @@
 <template>
   <div>
-
     <div class="topBar">
       <ol class="clearfix" style="list-style: none">
         <li v-for="item in navList" :key="item.id">
           <a v-on:click="changeNav(item)" v-bind:class="{topBarActive:active==item.id}" href="#">{{item.text}}</a>
         </li>
-
       </ol>
-
     </div>
     <section>
       <ol style="list-style: none">
@@ -54,52 +51,36 @@
 
 <script>
   export default {
-    name: "MainContent",
+    name: 'MainContent',
     methods: {
-
-
-      changePage: function (item) {
-
+      changePage (item) {
         this.loadData(item);
-
-
       },
-
-      loadData: function (pageIndex) {
-        let _ = this;
-        this.axiosGet('topics?pageNumber=' + pageIndex + '&limit=50', function (data) {
-
-          _.topicList = data.data;
+      loadData (pageIndex) {
+        this.axiosGet('topics?pageNumber=' + pageIndex + '&limit=50').then((data) => {
+          this.topicList = data.data;
         })
-
       },
-
-      changeNav: function (item) {
-
+      changeNav (item) {
         this.active = item.id;
       },
-      getTab: function (tab) {
-
+      getTab (tab) {
         switch (tab) {
-
-          case  "ask" :
+          case 'ask' :
             return '问答'
-          case  "share" :
+          case 'share' :
             return '共享'
-          case  "good" :
+          case 'good' :
             return '精华'
-          case "job":
-            return '招聘'
+          case 'job':
+            return '招聘';
         }
       }
-
-    }
-    ,
-    mounted: function () {
+    },
+    mounted () {
       this.loadData(1);
-    }
-    ,
-    data: function () {
+    },
+    data () {
       return {
         active: 0,
         navList: [
@@ -108,7 +89,7 @@
           {text: '分享', id: 2},
           {text: '问答', id: 3},
           {text: '招聘', id: 4},
-          {text: '客户端测试', id: 5},
+          {text: '客户端测试', id: 5}
         ],
         topicList: []
       }

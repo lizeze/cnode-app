@@ -1,13 +1,13 @@
 import Vue from 'vue';
 const commom = {
   install() {
-    Vue.prototype.getLoginUser = function (loginName, ok) {
-      this.axiosGet('/user/' + loginName, function (data) {
-         ok&&ok(data)
+    Vue.prototype.getLoginUser = (loginName) => {
+      return new Promise((resolve, reject) => {
+        this.axiosGet('/user/' + loginName).then((data) => {
+          resolve(data.data);
+        })
       })
     }
   }
-};
-export  default  commom
-
-
+}
+export default commom;

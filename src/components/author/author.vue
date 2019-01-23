@@ -31,19 +31,11 @@
 
 <script>
   export default {
-    name: "author",
+    name: 'author',
     props: {
       userInfo: {
-        type: Object,
-
+        type: Object
       }
-    },
-    data() {
-      return {}
-
-    },
-    created() {
-
     }
   }
 </script>

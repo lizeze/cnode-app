@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import TopBar from "./components/home/topBar";
+  import TopBar from './components/home/topBar';
   export default {
     name: 'App',
     components: {TopBar}

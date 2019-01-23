@@ -5,7 +5,7 @@
       </div>
     <div class="content">
       <ul>
-        <li class="content-item" v-for="item in userInfo.recent_topics">
+        <li class="content-item" v-for="item in userInfo.recent_topics" :key="item.id">
           <a   href="#" @click.stop.prevent="open(item.id)"> {{item.title}}</a>
         </li>
       </ul>
@@ -17,34 +17,25 @@
 
 <script>
     export default {
-        name: "othertopic",
-      props:{
-
-           userInfo:{
-             type:Object
-           }
-      },methods: {
-
-        open(id) {
-
+      name: 'othertopic',
+      props: {
+        userInfo: {
+          type: Object
+        }
+      },
+      methods: {
+        open (id) {
           this.$router.push({name: 'detail', params: {id: id}})
-
-
         },
-
         getStatus (urlStr) {
           var urlStrArr = urlStr.split('/')
           return urlStrArr[urlStrArr.length - 1]
         }
-      } ,
-          watch: {
-            '$route': function (route) {
-              this.$router.go(0)
-            },
-          },
-
-      created(){
-        console.log(this.getStatus(this.$route.path))
+      },
+      watch: {
+        '$route' (route) {
+          this.$router.go(0)
+        }
       }
     }
 </script>

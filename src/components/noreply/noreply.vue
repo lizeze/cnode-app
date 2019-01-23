@@ -5,8 +5,8 @@
     </div>
     <div class="content">
       <ul>
-        <li class="content-item" v-for="item in topicData">
-          <a href="#"> {{item.title}}</a>
+        <li class="content-item" v-for="(items,i) in topicData" :key="i"> 
+          <a href="#"> {{items.title}}</a>
         </li>
       </ul>
     </div>
@@ -14,28 +14,19 @@
 </template>
 <script>
   export default {
-    name: "noreply",
-    props: {
-      userInfo: {type: Object},
-      type: {type: String, default: 'other'}
-    },
-    data() {
+    name: 'noreply',
+    data () {
       return {
         topicData: {
           type: Array
         }
       }
     },
-    created(){
-      let _=this;
-        this.axiosGetDev('/topic/noreply',function (data) {
-           _.topicData=data.data.data
-
-        })
-
+    created () {
+      this.axiosGetDev('/topic/noreply').then((data) => {
+        this.topicData = data.data;
+      })
     }
-
-
   }
 </script>
 <style scoped>

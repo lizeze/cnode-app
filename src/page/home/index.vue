@@ -32,45 +32,23 @@
 </template>
 
 <script>
-
-
-  import MainContent from "./content";
-  import Pagination from "../../components/home/pagination";
-  import Noreply from "../../components/noreply/noreply";
+  import MainContent from './content';
+  import Noreply from '../../components/noreply/noreply';
 
   export default {
-    name: "index",
-    components: {Noreply, Pagination, MainContent},
-    data: function () {
-
+    name: 'index',
+    components: {Noreply, MainContent},
+    data () {
       return {
-
         userInfo: {}
-
       }
-
-    },
-    methods: {
-
-
-
-    },
-    created() {
-
-
     }
-
   }
 </script>
-
 <style scoped>
-
-
   .container {
-
     background: #E1E1E1;
   }
-
   .contents {
     width: 70%;
     float: left;

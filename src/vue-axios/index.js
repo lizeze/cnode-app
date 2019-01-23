@@ -1,34 +1,27 @@
-import Vue from 'vue'
-import axios from 'axios'
-
-let  baseUrl='https://cnodejs.org/api/v1/';
+import Vue from 'vue';
+import axios from 'axios';
+let baseUrl = 'https://cnodejs.org/api/v1/';
 const http = {
-  install() {
-    Vue.prototype.axiosGet = function (url,ok) {
-      axios
+  install () {
+    Vue.prototype.axiosGet = (url) => {
+      return new Promise((resolve, reject) => {
+        axios
         .get(baseUrl + url)
         .then(response => {
-          ok && ok(response.data);
-        })
-        .catch(error => {
-        })
-        .finally();
+          resolve(response.data);
+        }).finally();
+      }
+      )
     };
-
-    Vue.prototype.axiosGetDev = function (url,ok) {
-      axios
-        .get(url)
+    Vue.prototype.axiosGetDev = (url, ok) => {
+      return new Promise((resolve, reject) => {
+        axios.get(url)
         .then(response => {
-          ok && ok(response);
-        })
-        .catch(error => {
-        })
-        .finally();
+          resolve(response.data);
+        }).finally();
+      }
+      )
     }
-
-
-
   }
-};
-
-export default http
+}
+export default http;
