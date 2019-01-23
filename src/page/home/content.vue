@@ -38,13 +38,7 @@
 
       </ol>
     </section>
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :page-size="20"
-      v-on:current-change="changePage"
-      :total="100">
-    </el-pagination>
+ 
 
   </div>
 </template>
