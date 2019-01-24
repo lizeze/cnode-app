@@ -18,8 +18,12 @@
                          <label class="label">/</label>
                          <span class="visit">{{item.visit_count}}</span>
                       </div>
-                      <tag></tag>
-                     {{item.title}}
+                       <div class="tag-warpper">
+                        <tag :tab="item.tab"></tag>
+                       </div>
+                     <div class="title">
+                         <a href="#"> {{item.title}}</a>
+                     </div>
                  </li>
              </ul>
           </div>
@@ -65,7 +69,7 @@ export default {
 .box .content{
     background: #F6F6F6;
     flex: 0  0 100%;
-    margin: 13px 4px 0px 64px;
+    margin: 17px 4px 0px 70px;
 }
 .box .content .header{
     color: #8EBA39;
@@ -106,12 +110,27 @@ export default {
     font-size: 0;
     height: 29px;
     line-height: 29px;
-    margin-left: 4px;
+    margin-left: 5px;
+    width: 70px;
+    text-align: center;
 }
 .topic-warpper .topic-list .topic-item .count .reply,.visit,.label{
     font-size: 14px;
 }
 .topic-warpper .topic-list .topic-item .count .reply{
     color:  #9e78c0;
+}
+.topic-warpper .topic-list .topic-item .count .visit{
+    color: #B4B4B4;
+}
+.topic-warpper .topic-list .topic-item .tag-warpper{
+  margin:0px  5px;
+  margin-top: 2px;
+}
+.topic-warpper .topic-list .topic-item .title{
+    margin-top: 2px;
+}
+.topic-warpper .topic-list .topic-item .title a:hover{
+    text-decoration: underline;
 }
 </style>
