@@ -12,12 +12,9 @@ module.exports = function (app) {
   Random.county(true);
   Random.ctitle();
   //监听http请求
-
   app.get('/topic/noreply', function (rep, res) {
-
     res.json(Mock.mock(
       {
-
         "data|5": [
           {
             "title|+1": ["@ctitle(10,35)"]
@@ -27,11 +24,7 @@ module.exports = function (app) {
       )
     )
   })
-
-
   app.get('/user/userinfo', function (rep, res) {
-
-
     res.json(Mock.mock(
       {
         "array|10": [
@@ -50,5 +43,8 @@ module.exports = function (app) {
 
 
   });
+  app.get('/topic/types',(rep, res)=>{
+    res.json(util.getJsonFile('./data/TopicType.json'))
+  })
 }
 

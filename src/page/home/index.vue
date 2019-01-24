@@ -3,12 +3,9 @@
   <div class="container clearfix">
     <div class="contents">
       <MainContent></MainContent>
-
     </div>
     <div class="cards">
-
       <div class="card">
-
         <div class="inner">
           <p> CNode：Node.js专业中文社区</p>
           <div>您可以 <a href="#">登陆</a> 或 <a href="#">注册</a>,也可以</div>
@@ -17,24 +14,15 @@
           </a>
         </div>
       </div>
-
       <div class="card">
-
         <noreply></noreply>
-
       </div>
-
     </div>
-
-
   </div>
-
 </template>
-
 <script>
   import MainContent from './content';
   import Noreply from '../../components/noreply/noreply';
-
   export default {
     name: 'index',
     components: {Noreply, MainContent},
