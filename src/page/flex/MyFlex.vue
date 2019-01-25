@@ -19,29 +19,47 @@
                          <span class="visit">{{item.visit_count}}</span>
                       </div>
                        <div class="tag-warpper">
-                        <tag :tab="item.tab"></tag>
+                        <tag :tab="item.tab" :good="item.good" :top="item.top"></tag>
                        </div>
-                     <div class="title">
+                     <div class="title" :title="item.title">
                          <a href="#"> {{item.title}}</a>
                      </div>
+                     <div class="last-reply">
+                        
+                        <div class="avatar">
+                           <img :src="item.author.avatar_url" alt="头像" width="18" height="18">
+                          </div> 
+                          <div  class="time">15小时前</div> 
+                           
+                     </div> 
                  </li>
              </ul>
           </div>
       </div>
-      <div class="panels">33333</div>
+      <div class="panels">
+         <div class="panel">
+              <author :userInfo="userInfo"></author>
+         </div>
+         <div class="panel">
+            <noreply></noreply>
+         </div>
+      </div>
     </div>
     
 </template>
 <script>
-import Tag from '@/components/tag/tag'
+import Tag from '@/components/tag/tag';
+import author from '@/components/author/author';
+import noreply from '@/components/noreply/noreply';
 export default {
   name: 'MyFlex',
-  components: { Tag },
+  components: { Tag, author, noreply },
   data () {
     return {
       typeList: [],
       currentType: 1,
-      topicList: []
+      topicList: [],
+      userInfo: {}
     }
   },
   created () {
@@ -49,6 +67,9 @@ export default {
       this.typeList = data.data;
     })
     this.loadData(1);
+    this.axiosGet('/user/lizeze').then((user) => {
+      this.userInfo = user.data;
+    })
   },
   methods: {
     selectType (id) {
@@ -101,18 +122,27 @@ export default {
 .type-list .active a:hover{
        color: #fff;
 }
+.topic-warpper .topic-list {
+    background: #fff;
+}
 .topic-warpper .topic-list .topic-item{
     display: flex;
-    padding: 4px;
     border-bottom: 1px solid #F0F0F0;
+    justify-content:center;
+    align-self:center;
+   height: 50px;
+   line-height: 50px;
+   padding: 0px 18px;
+}
+.topic-warpper .topic-list .topic-item .user_avatar{
+	display:flex;
+	align-items:center; 
+
 }
 .topic-warpper .topic-list .topic-item .count{
     font-size: 0;
-    height: 29px;
-    line-height: 29px;
     margin-left: 5px;
     width: 70px;
-    text-align: center;
 }
 .topic-warpper .topic-list .topic-item .count .reply,.visit,.label{
     font-size: 14px;
@@ -125,12 +155,42 @@ export default {
 }
 .topic-warpper .topic-list .topic-item .tag-warpper{
   margin:0px  5px;
-  margin-top: 2px;
 }
 .topic-warpper .topic-list .topic-item .title{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
     margin-top: 2px;
+    max-width: 650px;
+    font-size: 16px;
+}
+.topic-warpper .topic-list .topic-item:hover{
+      background: #f5f5f5
 }
 .topic-warpper .topic-list .topic-item .title a:hover{
     text-decoration: underline;
+}
+.topic-warpper .topic-list .topic-item  .last-reply{
+  margin-left: auto; 
+  display: flex;
+}
+.topic-warpper .topic-list .topic-item  .last-reply .avatar{
+    display:inline-block;
+
+}
+.topic-warpper .topic-list .topic-item  .last-reply .time{
+    color: #798086;
+    text-align: right;
+    min-width: 50px;
+    white-space: nowrap;
+    font-size: 12px;
+    margin-left: 14px;
+}
+.panels{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.panels .panel{
+    width: 290px;
 }
 </style>

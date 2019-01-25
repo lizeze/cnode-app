@@ -6,7 +6,7 @@ import MyFlex from '@/page/flex/MyFlex';
 Vue.use(Router)
 
 export default new Router({
-  type: history,
+  mode: 'history',
   routes: [
     {
       path: '/',
