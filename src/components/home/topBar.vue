@@ -20,7 +20,7 @@
     name: 'topBar',
     data () {
       return {
-        navList: [{text: '首页'}, {text: '新手入门'}, {text: 'API'}, {text: '关于'}, {text: '注册'}, {text: '登陆'}]
+        navList: [{text: '1首页'}, {text: '新手入门'}, {text: 'API'}, {text: '关于'}, {text: '注册'}, {text: '登陆'}]
       }
     }
   }
