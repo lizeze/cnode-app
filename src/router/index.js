@@ -6,8 +6,8 @@ import Detail from '@/page/home/detail';
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: '/cnode/',
+  // mode: 'history',
+  // base: '/cnode/',
   routes: [
     {
       path: '/index',
